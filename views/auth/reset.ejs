@@ -1,0 +1,50 @@
+<%- include('../includes/header') %>
+<%- include('../includes/navbar1') %>
+
+<div class="container" style="width: 80%">
+    <!-- Start title -->
+        <h2 class="title">
+            Reset Password
+        </h2>
+    <!-- End title -->
+
+    <!-- Start messages -->
+        <% if(errorMessage) { %>
+            <div class="message is-danger hide">
+                <div class="message-body">
+                    <%= errorMessage %> 
+                </div>
+            </div>
+        <% } else if(successMessage) { %>
+            <div class="message is-primary hide">
+                <div class="message-body">
+                    <%= successMessage %> 
+                </div>
+            </div>
+            <% } %> 
+    <!-- End messages -->
+
+    <!-- Start form -->
+        <form action="/reset-password" method="POST">
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="email" name="email" placeholder="example@gmail.com" required>
+                    <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                    </span>
+                </p>
+            </div>
+            <div class="field">
+                <p class="control">
+                    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                    <button class="button is-danger">
+                        Reset
+                    </button>
+                </p>
+            </div>
+        </form>
+    <!-- End form -->
+
+</div>
+
+<%- include('../includes/footerWithoutCopyrights') %> 

@@ -1,0 +1,50 @@
+<%- include('../includes/header') %>
+<%- include('../includes/navbar1') %>
+
+
+<div class="container"style="max-width: 80%">
+  <!-- Start title -->
+    <h2 class="title">
+        Sign Up
+    </h2>
+  <!-- End title -->
+
+  <!-- Start messages -->
+    <% if(errorMessage) { %>
+      <div class="message is-danger hide">
+        <div class="message-body">
+          <%= errorMessage %> 
+        </div>
+      </div>
+    <% } %>
+  <!-- End messages -->
+ 
+  <form action="signup" method="POST">
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="email" name="email" placeholder="example@gmail.com" required>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="password" name="password" placeholder="Password" required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+          </p>
+      </div>
+      <div class="field">
+        <p class="control">
+          <button class="button is-danger">
+            Sign Up
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          </button>
+        </p>
+      </div>
+  </form>
+
+</div>
+<%- include('../includes/footerWithoutCopyrights') %> 

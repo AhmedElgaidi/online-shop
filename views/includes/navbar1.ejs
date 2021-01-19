@@ -1,0 +1,77 @@
+<div class="container"style="">
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item"href="/products">
+                <p class="subtitle has-text-weight-bold center-it center-it"style="color: hsl(348, 100%, 61%)">
+                    My shop
+                </p>
+            </a>
+            <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                </a>
+        </div>
+        <div class="navbar-menu"id="navMenu">
+            <!-- Start navbar-start -->
+                <div class="navbar-start">
+                    <% if(isAuthenticated) { %> 
+                    <div class="navbar-item">
+                        <a class="<%= path === '/admin/products' ? 'active' : '' %> has-text-weight-medium center-it"href="/admin/products"style="color: hsl(348, 100%, 61%)">
+                            Products
+                        </a>
+                    </div>
+                    <div class="navbar-item">
+                        <a class="<%= path === '/admin/add-product' ? 'active' : '' %> has-text-weight-medium center-it"href="/admin/add-product"style="color: hsl(348, 100%, 61%)">
+                            Add Product
+                        </a>
+                    </div>
+                    <div class="navbar-item">
+                        <a class="<%= path === '/cart' ? 'active' : '' %> has-text-weight-medium center-it"href="/cart"style="color: hsl(348, 100%, 61%)">
+                            Cart
+                        </a>
+                    </div>
+                    <div class="navbar-item">
+                        <a class="<%= path === '/order' ? 'active' : '' %> has-text-weight-medium center-it"href="/order"style="color: hsl(348, 100%, 61%)">
+                            Orders
+                        </a>
+                    </div>
+                    <% } else { %>
+                        <div class="navbar-item">
+                            <a class="has-text-weight-medium center-it"href="/products"style="color: hsl(348, 100%, 61%)">
+                                products
+                            </a>
+                        </div>
+                    <% } %>  
+                </div>
+            <!-- End navbar-start -->
+
+            <!-- Start navbar-end -->
+                <div class="navbar-end">
+                    <% if(!isAuthenticated) { %> 
+                        <div class="navbar-item">
+                            <a class="<%= path === '/signup' ? 'active' : '' %> has-text-weight-medium center-it"href="/signup"style="color: hsl(348, 100%, 61%)">
+                                Sign Up
+                            </a>
+                        </div>
+                        <div class="navbar-item ">
+                            <a class="<%= path === '/login' ? 'active' : '' %> center-it has-text-weight-medium"href="/login"style="color: hsl(348, 100%, 61%)">
+                                Log In
+                            </a>
+                        </div>
+                    <% } else { %> 
+                        <div class="navbar-item ">
+                            <form action="/logout" method="POST">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <a class=" <%= path === '/logout' ? 'active' : '' %> center-it has-text-weight-medium"href="/logout"style="color: hsl(348, 100%, 61%)">
+                                    Log Out
+                                </a>
+                            </form>
+                        </div>
+                    <% } %> 
+                </div>
+            <!-- End navbar-end -->
+        </div>
+    </nav>
+</div>
+<hr style="margin-top: 6px;">

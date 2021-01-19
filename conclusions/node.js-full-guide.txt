@@ -1,0 +1,57 @@
+# what is node.js?
+- A js runtime environment (It allows you to write js on the server)
+- Engine
+    - Browser: for examle (google chrome that has v8 engine, which written in c++, firefox has spiderMonkey), which comiples the code the machine language to be easy understood by user computer.
+    - Server: node adds some features to the v8 engine like ability to do actions on file system which is not permited to be done on the browser, but also there are some other things we can't do, like dealing with the DOM (document object modeling), but that's okay.
+- Side note: node.js is not limited to the server, it's also used as:
+    - Utility scripts: other front-end technologies like react, vue, angular and so on to work they need it.
+    as well as other back-end tools like express, web socket.io and others.
+
+# How does the web work?
+- User/ client (browser) sends a request to a certain server (domain / ip address)
+- This request triggers your server side code makes it do something
+- After the handeling done, a response (html, json, file(photo, video, voice), xml) sent 
+- But that's not all, there are other content added with the req / res called meta data such as headers that describes the content of the req / res.
+- These requestes and responses transmission done throw some protocols (Standerdize way of communication), HTTP (Hyper Text Transfer Protocol, a protocol for transferring data by the browser and the server) and HTTPS (Hyper Text Transfer Protocol Secure, The same as HTTP but data is encrypted during the transmission, so if there is someone spoofing the connection, he can't see our data).
+
+# modules types
+-  Custom modules: They are the modules that we've created by ourselves, like importing another function from another file and use it in our file.
+- Core modules: They are that shipped with node.js such as HTTP module which is responsilbe for creating our server and handeling requests and responese, HTTPS which lauch the SSL (secure socket layer).
+- Third party: Just like the custom ones, but not written by ourselves (other develpers).
+
+# Single thread, Event loop, Blocking code
+- Node.js uses only single one javascript thread (process in your OS), So, how to handle the thounds upcoming request at the same time?, here comes the concempt of event loop
+- Event loop starts automatically when our program runs, and it's responsible for handling the event callbacks, it run those ones that finish fast firtly and then the heavy work (which may deal with it by worker pook, which is a multi-threaded, that happens in cases of file transferring, heavy encryption process and those that needs more time to end, so it need the mulit-threaded funtionlity to end it as fast as possible) and that happens by making priority for every coming request on our desire and that leads us to the blocking (sync) and non-blocking code (Async), Async code(starts now and finish later), Sync code(Starts now and don't go to other code until it's done).
+
+
+
+# Buffer and streams
+- First, we need to know when a large data being transmitted, it's not transmitted as only one piece, it's transmitted throw lots of pieces (chunks) depending on it's size, this process called streaming (streams)
+- req1 holds a chunk, req2 holds the second chunk and so on.
+- Streams works on a concept called buffer, which is a temporay memory that a stream takes to hold some data until it's consumed, which means take data (chunk1) from position A and handle it at position B and handle it until chunk2 comes, so the idea is start working on the data earily.
+
+
+# NPM scripts
+- Firstly, npm is node package manager.
+- npm scripts are, well, scripts. We generally use scripts to automate reptitve tasks, for example building our project, minifiny our css, js files, we could use bash scripts to automate these taskes or we could use a task runer like Gulp or grunt, but npm scripts are really easy to use and learn and it's really versatile.
+- All these scripts are found in package.json file, and found in two main groups(native, custom scripts) and the difference is the way of executing the command, for native just write for example 'npm start', for custom scripts 'npm run "script name"'.
+- we can write shell(bash(shell for linux) for example) scripts in it if the task was long and also could invoke other scripts in a script as i did with clean and build script.
+
+
+# Installing 3rd parties (dependices, They are out there for not re-inventing the wheel)
+- we can download them but after defining how do we need them in our our app.
+- Production dependency => 'npm i --save "package name" '
+- Development dependency => 'npm i --save-dev "package name" '
+- my machine => 'npm i -g "package name" ' => install it globally on my computer.
+
+
+# Types of Errors (Arranged according to simplicity)
+1) Syntax Errors: They are mis-spelling(typo) in our code, our editor shows them to us.
+2) Runtime Errors: They broke your code when you execute them(they make your code crash)(appear in the console).
+3) Logical Errors: Your code doesn't give a message like others, It just doesn't work as it expected to and that's why they are the hardest to debug(by making break points and run our code and go from one break point to another, in our editor's debuger).
+
+# MVC (Model View Controller)
+- It's a way of logically structuring our code.
+-- Model => Represents our database and it's deals.
+-- Views => Represnts what user sees in his browser.
+-- Controllers => Connects model and views (In-between logic).

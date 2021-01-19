@@ -1,0 +1,96 @@
+<%- include('../includes/header') %>
+<%- include('../includes/navbar1') %>
+
+
+<div class="title has-text-centered pb-5">
+    My products
+</div>
+<!-- <% if(prods.length > 0) { %>
+
+    
+
+    
+    <!-- start test -->
+        <div class="container mt-3" style="max-width: 80%">
+            <div class="columns grid center-it">
+                <!-- Let's loop through the products -->
+                    <% for (let product of prods) { %>
+                        <div class="column is-4-desktop is-4-widescreen is-12-touch">
+                            <!-- on product level -->
+                                <div class="card has-text-centered">
+
+                                    <!-- title -->
+                                        <div class="card-header-title is-centered has-text-weight-bold is-size-5 pt-3">
+                                            <%= product.title %> 
+                                        </div>
+                            
+                                    <!-- Image -->
+                                        <div class="grid">
+                                            <div class="image is-128x128">
+                                                <img class="is-rounded" src="<%= product.imageUrl %> " alt="<%= product.title %>">
+                                            </div>
+                                        </div>
+                                    
+                                    <!-- price and description -->
+                                        <div class="card-content">
+                                            <div class="media">
+                                                <div class="media-content">
+                                                        <h1 class="mt-5 has-text-weight-semibold">
+                                                            <%= product.price %> $ 
+                                                        </h1>
+                                                </div>
+                                            </div>
+                                        </div>
+                            
+                                    <!-- buttons-->
+                                        <div class="card-footer">
+                                            
+                                            <!-- Link 1 -->
+                                                <div class="card-footer-item mb-1">
+                                                    <% if(isAuthenticated) { %>
+                                                        <a href="/admin/edit-product/<%= product._id %> " class="button is-rounded">
+                                                            Edit
+                                                        </a>
+                                                    <% } %>  
+                                                    <a href="/products/<%= product._id %> " class="button is-danger is-rounded">
+                                                        Details
+                                                    </a>
+                                                </div>
+                            
+                                        </div>
+                                </div>
+                        </div>
+
+                    <% } %> 
+            </div>
+        </div>
+    <!-- end test -->
+
+
+
+
+
+
+<% } else { %>  
+    <h4 class="subtitle has-text-danger center-it">
+        No products found...
+    </h4>
+<% } %> 
+
+<!-- Start messages -->
+<% if(errorMessage) { %>
+        <div class="message is-danger hide">
+            <div class="message-body">
+                <%= errorMessage %> 
+            </div>
+        </div>
+    <% } else if(successMessage) { %>
+        <div class="message is-primary hide">
+            <div class="message-body">
+                <%= successMessage %> 
+            </div>
+        </div>
+<% } %> 
+<!-- End messages -->
+
+<%- include('../includes/footer') %>

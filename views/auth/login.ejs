@@ -1,0 +1,61 @@
+<%- include('../includes/header') %>
+<%- include('../includes/navbar1') %>
+
+
+<div class="container"style="width: 80%">
+  <!-- Start title -->
+    <h2 class="title">
+      Log In
+    </h2>
+  <!-- End title -->
+
+  <!-- Start messages -->
+    <% if(errorMessage) { %>
+      <div class="message is-danger hide">
+        <div class="message-body">
+          <%= errorMessage %> 
+        </div>
+      </div>
+    <% } else if(successMessage) { %>
+      <div class="message is-primary hide">
+        <div class="message-body">
+            <%= successMessage %> 
+        </div>
+      </div>
+      <% } %> 
+<!-- End messages -->
+
+<!-- Start form -->
+  <form action="/login"method="POST">
+      <div class="field">
+        <p class="control has-icons-left has-icons-right">
+          <input class="input" type="email" name="email" placeholder="example@gmail.com" required>
+            <span class="icon is-small is-left">
+              <i class="fas fa-envelope"></i>
+            </span>
+        </p>
+      </div>
+      <div class="field">
+        <p class="control has-icons-left">
+          <input class="input" type="password" name="password" placeholder="Password" required>
+          <span class="icon is-small is-left">
+            <i class="fas fa-lock"></i>
+          </span>
+          </p>
+      </div>
+      <div class="field">
+        <p class="control">
+          <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+          <button class="button is-danger">
+            Log In 
+          </button>
+        </p>
+        <p class="control mt-3">
+          <a href="/reset-password"> Forget your password ?</a>
+        </p>
+      </div>
+  </form>
+<!-- End form -->
+</div>
+
+<%- include('../includes/footerWithoutCopyrights') %> 

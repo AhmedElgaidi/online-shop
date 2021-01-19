@@ -1,0 +1,57 @@
+<%- include('../includes/header') %>
+<%- include('../includes/navbar1') %>
+
+<div class="columns has-text-centered is-vcentered is-multiline">
+    <!-- start title -->
+        <div class="title column is-12">
+            <%= product.title %> 
+        </div>
+    <!-- End title -->
+
+    <!-- Start image -->
+        <div class="center-it column" style="justify-content: center;">
+            <figure class="image is-128x128">
+                <img class="is-rounded"src="<%= product.imageUrl %> " alt="<%= product.title %> ">
+            </figure>
+        </div>
+    <!-- End image -->
+
+    <!-- start price -->
+        <div class="column is-12 mt-3 subtitle has-text-weight-bold">
+            <p> <%= product.price %> $</p>
+        </div>
+    <!-- End price -->
+
+    <!-- start descrition -->
+        <div class="column is-12 has-text-weight-semibold">
+            <p>
+                <%= product.description %> 
+            </p>
+        </div>
+    <!-- End image -->
+
+</div>
+
+
+<% if(isAuthenticated) { %> 
+    <!-- Start buttons -->
+        <div class="is-flex"style="justify-content: center;">
+            <a href="/admin/edit-product/<%= product.id %>" class="button is-rounded">
+                Edit
+            </a>
+
+            <!-- Start delete button -->
+            <form method="POST" action="/admin/delete-product">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                <input type="hidden" name="productId" value="<%= product.id %>">
+                <button type="submit" class="button is-danger is-rounded">
+                    Delete
+                </button>
+            </form>
+            <!-- End delete button -->
+
+        </div>
+<!-- End buttons -->
+<% } %>
+
+<%- include('../includes/footerWithoutCopyrights') %>

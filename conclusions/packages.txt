@@ -1,0 +1,48 @@
+# Framework VS. Libararies
+- Both are reusable code written by someone else.
+- To help us slove our problems in an easily way.
+- Library is used to solve a specific problem or to add specific feature.
+- Framework is somthing more generic and bigger. 
+
+
+# Express.js
+- It's a Framework for building web applicaions and APIs
+- 'body-parser' is used to parse the request data, and parsing means taking something that has no strucure and gives it a strucure
+
+
+2) body-parser
+- A library for for parsing incoming requests.
+- It' written as a middleware befor our handlers, the data is available under req.body
+- app.use(bodyParser.urlencoded({ extended: true })) => means make our code expects that the coming data maybe something other string type, may be file or json type and so on.
+- The idea is, it turns the data over the requst into a js object so we can access it and do whatever we want with it. 
+- It's features were built-in in the node.js modules, but it's deprecated now, we we'll use it as a 3rd dependency.
+
+
+3) express-session
+- Session is for storing data (specially sensitive ones) on server side across requests, that
+help in scoping our users (users don't share this session)
+- we use session when there is data that we don't other users see it (private data)
+- it's a package for express, but not downloaded with the nodemoduels so we have to download 
+it in order to use it.
+- I don't need a cookie-parser package anymore, it do that for us
+- It's for intializing a session and dealing with it
+
+4) connect-mongodb-session
+- It's for saving session in mongodb instead of using our server memory that of course
+will crash when there are lots of users.
+- But of course we can save our session in different place(other than mongodb), such as redis(the best place for sessions)
+or mysql or even a simple file.
+
+5) csurf
+- A package that generate a token(string) that we can embed it in our forms (our views) for every request to our backend side that changes the user state (change password, add new product, delelte one) any thing might be sensitive to our users
+- on our serverside, it check if every comming request has our valid token (random hased value) or not.
+
+6) connect-flash
+- A package to display messages to the users, by putting it in his session and delete it
+after using it
+
+7) noemailer
+- A package used for sending emails from node.js server
+
+8) nodemailer-sendgrid-transport
+- A package to integrate our nodemailer with sendgrid service

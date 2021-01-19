@@ -1,0 +1,63 @@
+<%- include('../includes/header') %>
+<%- include('../includes/navbar1') %> 
+
+<div class="container"style="max-width: 80%">
+<form action="/admin/<% if(isEditing) { %>edit-product <% } else { %>add-product <% } %> " method="POST">
+  
+  <!-- title -->
+    <div class="field">
+      <label class="label"for="title">Title</label>
+      <div class="control">
+      <input name="title" id="title" class="input" type="text" placeholder="Product title" <% if(isEditing) { %> value="<%= product.title %>" <% } %>  required>
+      </div>
+    </div>
+
+  <!-- URL -->
+    <div class="field">
+      <label class="label mt-3"for="imageUrl">Image URL</label>
+      <div class="control">
+        <input name="imageUrl" id="imageUrl" class="input" type="text" placeholder="Product image url" <% if(isEditing) { %> value="<%= product.imageUrl %>" <% } %>  required>
+      </div>
+    </div>
+
+  <!-- Price -->
+  <div class="field">
+    <label class="label mt-3" for="price">Price</label>
+    <div class="control">
+      <input name="price" id="price" class="input" type="text" placeholder="Product price" <% if(isEditing) { %> value="<%= product.price %>" <% } %>  required>
+    </div>
+  </div>
+
+  <!-- Description -->
+    <div class="field">
+      <label class="label mt-3" for="description">Description</label>
+      <div class="control">
+        <textarea name="description" id="description" class="textarea" placeholder="Product description" required><% if(isEditing) { %><%= product.description %><% } %></textarea>
+      </div>
+    </div>
+  
+  <!-- hidden input -->
+  <% if(isEditing) { %> 
+    <div class="field">
+      <input type="hidden" name="productId" value="<%= product._id %>">
+    </div>
+  <% } %> 
+
+
+  <!-- Button -->
+    <div class="field">
+      <div class="control">
+        <button class="button is-danger mt-3" type="submit">
+          <% if(isEditing) { %>
+              Edit product
+            <% } else { %>    
+              Save Product
+            <% } %> 
+        </button>
+      </div>
+    </div>
+  <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+  </form>
+</div>
+
+<%- include('../includes/footerWithoutCopyrights') %> 

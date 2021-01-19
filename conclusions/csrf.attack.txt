@@ -1,0 +1,2 @@
+When we use sessions in our website, we make it vulnerale to csrf attacks
+so, we have to make sure we solve this problem

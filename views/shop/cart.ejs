@@ -1,0 +1,66 @@
+<%- include('../includes/header') %>
+<%- include('../includes/navbar1') %>
+
+
+<h1 class="has-text-danger has-text-weight-bold title center-it pb-6">
+    Your cart products
+</h1>
+
+<div class="container mt-3" style="max-width: 80%">
+    <% products[0].products.forEach((product, index) => { %> 
+        <ul>
+            <!-- Start product level -->
+                <li class="mb-5">
+                    <div class="columns">
+
+                        <p class="column center has-text-centered has-background-danger has-text-white has-text-weight-bold is-size-5" style="background-color: deepskyblue;">
+                            Product <%- index+1%> 
+                            <a class="pr-3 has-text-light ml-2 is-size-5"href="/products/<%= product.productId %> ">
+                                <i class="fas fa-info-circle"></i>
+                            </a>
+                        </p>
+
+                        <p class="column has-text-centered has-background-danger-light has-text-danger has-text-weight-bold"> 
+                           Total price = <%= product.price %> $
+                        </p>
+
+                        <p class="column has-text-centered has-background-danger-light has-text-danger has-text-weight-bold">
+                           Quantity = <%= product.quantity %> 
+                        </p>
+                        
+                        <div class="column has-text-centered has-background-danger-light has-text-danger has-text-weight-bold">
+                            <form action="/cart-delete-item" method="POST">
+                                <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+                                <input type="hidden" name="productId" value="<%= product.productId %>">
+                                <button class="button has-background-danger has-text-light" type="submit">
+                                    Delete One
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </li>
+
+            <!-- End product level -->
+        </ul>
+
+    <% }) %> 
+</div>
+<!-- start cart total price -->
+<h2 class="subtitle is-3 has-text-danger has-text-weight-bolder center-it pt-2">
+    All cart
+</h2>
+
+<div class="container" style="max-width: 80%">
+    <div class="columns center-it has-text-weight-bold has-text-centered mb-3 mt-3">
+        <div class="column has-background-danger has-text-light is-3">
+            All
+        </div>
+        <div class="column has-background-danger-light has-text-danger">
+            test
+        </div>
+    </div>
+
+</div>
+<!-- End cart toal price -->
+
+<%- include('../includes/footerWithoutCopyrights') %>

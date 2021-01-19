@@ -1,0 +1,29 @@
+{
+  "name": "online-shop-with-nodejs",
+  "version": "1.0.0",
+  "description": "Full guide to node.js",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "clean": "rm -r dist && mkdir dist",
+    "webpack": "It's a module bundlers, we can use it to convert lots of js files into only one",
+    "build": "npm run clean && webpack"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.0",
+    "body-parser": "^1.19.0",
+    "compression": "^1.7.4",
+    "connect-flash": "^0.1.1",
+    "connect-mongodb-session": "^2.4.1",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.5",
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "method-override": "^3.0.0",
+    "mongoose": "^5.10.16",
+    "nodemailer": "^6.4.17"
+  }
+}

@@ -1,0 +1,43 @@
+* {
+  scroll-behavior: smooth;
+}
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: stretch;
+}
+.center-it {    
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+.vll {
+  width: 1px;
+  background-color: hsl(348, 100%, 61%);
+  height: 100%;
+  float: left;
+  border: 2px ridge hsl(348, 100%, 61%);
+  border-radius: 2px;
+}
+.vlr {
+  width: 1px;
+  background-color: hsl(348, 100%, 61%);
+  height: 100%;
+  float: right;
+  border: 2px ridge hsl(348, 100%, 61%);
+  border-radius: 2px;
+}
+.navbar-item {
+  position: relative;
+}
+.active, .active:hover {
+  padding-bottom: 4px;
+  background:linear-gradient(hsl(348, 100%, 61%), hsl(348, 100%, 61%)) bottom/100% 2px no-repeat;
+}
+.fix-it {
+  position: absolute;
+  bottom: 5px;
+  left: 20px;
+}
